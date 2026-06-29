@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Pandit | Backend Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand-100 shadow-sm transition-all duration-300">
+        <!-- Reading Progress Indicator -->
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-brand-600 to-sky-400 transition-all duration-100" style="width: 0%"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="flex items-center space-x-3 group">
+                        <span class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-brand-500/20 transform group-hover:rotate-6 transition-transform">
+                            AP
+                        </span>
+                        <div class="flex flex-col">
+                            <span class="font-extrabold text-slate-900 leading-tight tracking-tight text-lg group-hover:text-brand-600 transition-colors">ASHISH PANDIT</span>
+                            <span class="text-xs text-brand-600 font-semibold tracking-widest uppercase">Backend Engineer</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Nav Buttons with ScrollSpy Underlines -->
+                <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                    <a href="#about" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2">
+                        About
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
+                    </a>
+                    <a href="#skills" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2">
+                        Skills
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
+                    </a>
+                    <a href="#forge" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2 flex items-center gap-1.5">
+                        <i class="fa-solid fa-gears text-xs text-brand-500"></i> System Builder
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
+                    </a>
+                    <a href="#projects" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2">
+                        Projects
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
+                    </a>
+                    <a href="#education" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2">
+                        Education
+                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
+                    </a>
+                    <a href="#contact" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-xl font-bold text-sm tracking-wide shadow-md shadow-brand-600/15 transform hover:-translate-y-0.5 transition-all">
+                        Get In Touch
+                    </a>
+                </div>
+
+                <!-- Fixed Mobile Menu Burger Icon Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" aria-label="Toggle Navigation Menu" class="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-brand-50 focus:outline-none transition-all">
+                        <i id="menu-icon" class="fa-solid fa-bars text-xl transition-transform duration-200"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smooth Sliding Dropdown Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute left-0 right-0 z-40 transition-all duration-300 opacity-0 -translate-y-4">
+            <div class="px-4 pt-3 pb-6 space-y-2">
+                <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">About</a>
+                <a href="#skills" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">Skills</a>
+                <a href="#forge" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-gears text-brand-500"></i> System Builder
+                </a>
+                <a href="#projects" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">Projects</a>
+                <a href="#education" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">Education</a>
+                <div class="pt-2 px-4">
+                    <a href="#contact" class="mobile-nav-link block w-full text-center py-3.5 rounded-xl text-base font-extrabold bg-brand-600 text-white shadow-md shadow-brand-600/10 transition-all font-semibold">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="animated-gradient min-h-[90vh] flex items-center justify-center relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+        <div class="absolute -top-10 -left-10 w-48 h-48 sm:w-72 sm:h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-10 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-4xl mx-auto text-center z-10">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-brand-100 text-brand-800 border border-brand-200 shadow-sm animate-bounce mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                Open For Developer Opportunities (Graduating 2028)
+            </span>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                Hey, I'm <span class="bg-gradient-to-r from-brand-600 to-sky-500 bg-clip-text text-transparent">Ashish Pandit</span>
+            </h1>
+            
+            <p class="text-xl sm:text-2xl text-slate-600 font-medium mb-2 max-w-2xl mx-auto">
+                Aspiring Java Backend Engineer
+            </p>
+            
+            <p class="text-md sm:text-lg text-slate-500 max-w-xl mx-auto mb-8">
+                Building robust APIs, containerized systems, and event-driven distributed microservices.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
+                <a href="https://linkedin.com/in/ashish-pandit-59356632a" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700 hover:text-brand-600 hover:border-brand-300 hover:shadow-md transition-all">
+                    <i class="fa-brands fa-linkedin text-brand-600 text-lg"></i>
+                    <span class="font-semibold text-sm">LinkedIn</span>
+                </a>
+                <a href="https://github.com/ap3549746-sketch" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700 hover:text-slate-950 hover:border-slate-300 hover:shadow-md transition-all">
+                    <i class="fa-brands fa-github text-slate-950 text-lg"></i>
+                    <span class="font-semibold text-sm">GitHub</span>
+                </a>
+                <a href="https://leetcode.com/u/ashish1406/" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700 hover:text-amber-500 hover:border-amber-300 hover:shadow-md transition-all">
+                    <i class="fa-solid fa-code text-amber-500 text-lg"></i>
+                    <span class="font-semibold text-sm">LeetCode</span>
+                </a>
+                <a href="mailto:ap3549746@gmail.com" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700 hover:text-rose-500 hover:border-rose-300 hover:shadow-md transition-all">
+                    <i class="fa-solid fa-envelope text-rose-500 text-lg"></i>
+                    <span class="font-semibold text-sm">Email</span>
+                </a>
+                <a href="https://www.instagram.com/theashish.pt/" class="flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700 hover:text-rose-500 hover:border-rose-300 hover:shadow-md transition-all">
+                    <i class="fa-brands fa-instagram text-rose-500 text-lg"></i>
+                    <span class="font-semibold text-sm">Instagram</span>
+                </a>
+            </div>  
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 text-white font-bold shadow-lg hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-diagram-project"></i> View My Work
+                </a>
+                <a href="#forge" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-50 border border-brand-200 text-brand-700 font-bold shadow-sm hover:bg-brand-100 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-gears"></i> Build Systems
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+            <span class="text-xs font-semibold text-slate-400 tracking-widest uppercase">Scroll Down</span>
+            <div class="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center p-1">
+                <div class="w-1.5 h-3 bg-brand-500 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROFESSIONAL SUMMARY / ABOUT -->
+    <section id="about" class="py-20 bg-white border-b border-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1.5 rounded-full">Professional Summary</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Building Scalable Systems</h2>
+                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group max-w-sm w-full">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brand-400 to-sky-300 rounded-2xl filter blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div class="relative bg-white border border-brand-100 rounded-2xl p-6 sm:p-8 shadow-xl">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 text-xl font-bold">
+                                    <i class="fa-solid fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Greater Noida, IN</h4>
+                                    <p class="text-xs text-slate-400">Current Base</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-slate-50 rounded-xl flex items-start gap-3.5">
+                                    <i class="fa-solid fa-plane-departure text-sky-500 mt-1"></i>
+                                    <p class="text-sm text-slate-600 leading-relaxed"><strong class="text-slate-800">Travel Mindset:</strong> Exploring foreign terrains broadens perspectives and refines engineering problem-solving tactics in unexpected ways.</p>
+                                </div>
+                                <div class="p-4 bg-slate-50 rounded-xl flex items-start gap-3.5">
+                                    <i class="fa-solid fa-compass-drafting text-orange-400 mt-1"></i>
+                                    <p class="text-sm text-slate-600 leading-relaxed"><strong class="text-slate-800">Careful Design:</strong> Careful system design requires exact components and sequence coordination—matching how clean code prevents operational deadlocks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-900 leading-snug">
+                        Blending precise logic execution with system scaling.
+                    </h3>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        I am an adaptable learner and dedicated software engineering student with deep interests in <span class="text-brand-600 font-semibold">Java backend systems</span>. I firmly believe writing clean code mirrors structural system design: every API gateway, decoupling layer, and data schema must be perfectly designed to avoid bottleneck failures.
+                    </p>
+                    <p class="text-slate-500 leading-relaxed">
+                        Whether containerizing microservices in Docker, tuning asynchronous messaging pipelines using Apache Kafka, or implementing secure token logic with Spring Security on AWS EC2, I treat every technology as a curated component aimed at crafting robust system performance.
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-brand-50/50 border border-brand-100 text-center">
+                            <span class="block text-2xl font-extrabold text-brand-700">7.2</span>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Current B.Tech CGPA</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-brand-50/50 border border-brand-100 text-center">
+                            <span class="block text-2xl font-extrabold text-brand-700">2+</span>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Major System Builds</span>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1 p-4 rounded-xl bg-brand-50/50 border border-brand-100 text-center">
+                            <span class="block text-2xl font-extrabold text-brand-700">100%</span>
+                            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Cloud Native (AWS/Azure)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="py-20 bg-slate-50 border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-100 px-3 py-1.5 rounded-full">Skills</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">What I Know</h2>
+                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Languages -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">Languages</h3>
+                    <ul class="space-y-3 text-slate-600 flex flex-col items-center">
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-java text-orange-500 w-5"></i> Java</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-code text-blue-600 w-5"></i> C++</li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-python text-yellow-500 w-5"></i> Python</li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-js text-yellow-400 w-5"></i> JavaScript</li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-html5 text-orange-600 w-5"></i> HTML/CSS</li>
+                    </ul>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">Frameworks</h3>
+                    <ul class="space-y-3 text-slate-600 flex flex-col items-center">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-leaf text-emerald-500 w-5"></i> Spring Boot</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-indigo-500 w-5"></i> Spring Security</li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-react text-sky-500 w-5"></i> React.js</li>
+                    </ul>
+                </div>
+
+                <!-- Tools & Databases -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">Tools & Databases</h3>
+                    <ul class="space-y-3 text-slate-600 flex flex-col items-center">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-database text-blue-500 w-5"></i> MySQL & PostgreSQL</li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-aws text-amber-500 w-5"></i> AWS </li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-docker text-sky-500 w-5"></i> Docker</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-envelope-open-text text-red-500 w-5"></i> Kafka & RabbitMQ</li>
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-git-alt text-slate-700 w-5"></i> Git & Postman</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE GAME: BACKEND SYSTEM BUILDER -->
+    <section id="forge" class="py-20 bg-white border-b border-brand-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1.5 rounded-full">Interactive Segment</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Ashish's System Builder</h2>
+                <p class="text-slate-500 text-sm mt-2">Assemble a fast system by adding backend components to the configuration block!</p>
+                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <div class="lg:col-span-4 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-microchip text-brand-600"></i> Target Systems
+                        </h3>
+                        
+                        <!-- Blueprint 1 -->
+                        <div onclick="selectBlueprint('ecommerce')" id="blueprint-ecommerce" class="blueprint-btn active p-5 rounded-2xl bg-brand-50 border-2 border-brand-500 shadow-sm cursor-pointer transition-all hover:shadow-md mb-4">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 text-sm">E-Commerce Pipeline</h4>
+                                <span class="text-[10px] font-bold bg-brand-100 text-brand-700 px-2 py-0.5 rounded-md">Enterprise</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Required nodes: Secure APIs, database persistence, dynamic web client interaction.</p>
+                            <div class="flex items-center gap-2 mt-4 text-xs font-semibold text-brand-600">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                                <span>Requires 4 System Nodes</span>
+                            </div>
+                        </div>
+
+                        <!-- Blueprint 2 -->
+                        <div onclick="selectBlueprint('distributed')" id="blueprint-distributed" class="blueprint-btn p-5 rounded-2xl bg-white border-2 border-slate-100 cursor-pointer transition-all hover:bg-slate-50 hover:shadow-sm">
+                            <div class="flex justify-between items-start">
+                                <h4 class="font-bold text-slate-900 text-sm">Distributed Task Cluster</h4>
+                                <span class="text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-md">Asynchronous</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Required nodes: Asynchronous message digestion, microservices scaling, and isolated containers.</p>
+                            <div class="flex items-center gap-2 mt-4 text-xs font-semibold text-slate-500">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                                <span>Requires 4 System Nodes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 flex flex-col justify-between bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-bold text-slate-800 text-md flex items-center gap-2">
+                                <i class="fa-solid fa-network-wired text-brand-600"></i> System Orchestration & Assembly
+                            </h4>
+                            <button onclick="resetForge()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition-colors flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-left"></i> Reset System
+                            </button>
+                        </div>
+
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center min-h-[220px] text-center relative overflow-hidden">
+                            <div id="forge-empty-state" class="space-y-4">
+                                <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 mx-auto text-3xl animate-pulse">
+                                    <i class="fa-solid fa-cube"></i>
+                                </div>
+                                <h5 class="font-bold text-slate-700">Add system components below to assemble the backend!</h5>
+                                <p class="text-xs text-slate-400 max-w-sm mx-auto">Click on the system inventory buttons below to dispatch system components to the assembler.</p>
+                            </div>
+
+                            <div id="forge-compiling-state" class="hidden space-y-4">
+                                <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+                                    <div class="absolute inset-0 rounded-full border-4 border-dashed border-brand-500 animate-spin"></div>
+                                    <span class="text-3xl text-brand-600"><i class="fa-solid fa-microchip animate-pulse"></i></span>
+                                </div>
+                                <h5 class="font-extrabold text-brand-600 font-mono">Compiling Microservices...</h5>
+                                <p class="text-xs text-slate-400">Deploying cloud instances, mounting docker volumes, starting connection pools.</p>
+                            </div>
+
+                            <div id="forge-success-state" class="hidden space-y-4">
+                                <div class="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-2xl mx-auto animate-bounce">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                </div>
+                                <h5 id="success-blueprint-title" class="font-extrabold text-emerald-600 text-lg">System Deployed Successfully!</h5>
+                                <p id="success-blueprint-desc" class="text-xs text-slate-500 max-w-md mx-auto leading-relaxed"></p>
+                                <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl flex items-center justify-center gap-3 max-w-xs mx-auto">
+                                    <span class="text-xs font-bold text-slate-400">Environment status:</span>
+                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded">AWS EC2 Cluster Active</span>
+                                </div>
+                            </div>
+
+                            <div id="selected-components-tray" class="flex flex-wrap justify-center gap-2 mt-4"></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">System Block Inventory</span>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                            <button onclick="addComponent('Java')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-brands fa-java text-orange-500"></i> Java
+                            </button>
+                            <button onclick="addComponent('Spring Boot')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-leaf text-emerald-500"></i> Spring Boot
+                            </button>
+                            <button onclick="addComponent('Spring Security')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-shield text-indigo-500"></i> Spring Security
+                            </button>
+                            <button onclick="addComponent('Apache Kafka')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-envelope-open-text text-red-500"></i> Apache Kafka
+                            </button>
+                            <button onclick="addComponent('MySQL')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-database text-blue-500"></i> MySQL
+                            </button>
+                            <button onclick="addComponent('PostgreSQL')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-database text-indigo-400"></i> PostgreSQL
+                            </button>
+                            <button onclick="addComponent('React.js')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-brands fa-react text-sky-500"></i> React.js
+                            </button>
+                            <button onclick="addComponent('Docker')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
+                                <i class="fa-brands fa-docker text-sky-500"></i> Docker
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-20 bg-slate-50 border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-100 px-3 py-1.5 rounded-full">Engineering Showcase</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Featured Projects</h2>
+                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl">🛒</span>
+                            <span class="text-xs font-bold text-brand-600 bg-brand-50 border border-brand-100 px-3 py-1 rounded-full uppercase tracking-wider">Full-Stack Application</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight group-hover:text-brand-600 transition-colors">Full-Stack E-Commerce Platform</h3>
+                        <p class="text-sm text-slate-500 mt-3 leading-relaxed">A production-ready e-commerce platform combining strong Java-Spring backend design with fully responsive visual interactions.</p>
+                        <div class="mt-6 space-y-2.5">
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                                <i class="fa-solid fa-circle-check text-brand-500 mt-1"></i>
+                                <span>Built fully responsive frontend components using React.js.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                                <i class="fa-solid fa-circle-check text-brand-500 mt-1"></i>
+                                <span>Integrated secure, state-managed JWT token authorizations via Spring Security.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                                <i class="fa-solid fa-circle-check text-brand-500 mt-1"></i>
+                                <span>Containerized using Docker configs and deployed to live AWS EC2 and Azure servers.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8 bg-slate-50/80 border-t border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5 justify-center sm:justify-start">
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Spring Boot</span>
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md">React.js</span>
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md">MySQL</span>
+                        </div>
+                        <a href="https://github.com/ap3549746-sketch" target="_blank" class="w-full sm:w-auto text-center font-bold text-xs bg-slate-900 text-white px-4 py-2.5 rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="p-6 sm:p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl">⚡</span>
+                            <span class="text-xs font-bold text-purple-600 bg-purple-50 border border-purple-100 px-3 py-1 rounded-full uppercase tracking-wider">Distributed Backend</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight group-hover:text-brand-600 transition-colors">Distributed Asynchronous Queue System</h3>
+                        <p class="text-sm text-slate-500 mt-3 leading-relaxed">An asynchronous event digestion cluster designed to handle computationally heavy operations, minimizing server blockages.</p>
+                        <div class="mt-6 space-y-2.5">
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                                <i class="fa-solid fa-circle-check text-brand-500 mt-1"></i>
+                                <span>Implemented isolated threads to run important ingestion pipelines in the background.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                                <i class="fa-solid fa-circle-check text-purple-500 mt-1"></i>
+                                <span>Utilized Apache Kafka and RabbitMQ queues to successfully decouple input feeds.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
+                                <i class="fa-solid fa-circle-check text-purple-500 mt-1"></i>
+                                <span>Leveraged Docker clusters to orchestrate Postgres databases and active message brokers locally.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8 bg-slate-50/80 border-t border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                        <div class="flex flex-wrap gap-1.5 justify-center sm:justify-start">
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Spring Boot</span>
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Kafka</span>
+                            <span class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2 py-1 rounded-md">Docker</span>
+                        </div>
+                        <a href="https://github.com/ap3549746-sketch" target="_blank" class="w-full sm:w-auto text-center font-bold text-xs bg-slate-900 text-white px-4 py-2.5 rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5">
+                            <i class="fa-brands fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-20 bg-white border-b border-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1.5 rounded-full">Background</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Education Journey</h2>
+                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto relative pl-6 border-l-2 border-slate-100 space-y-12">
+                <!-- B.Tech -->
+                <div class="relative">
+                    <span class="absolute -left-10 top-0.5 w-7 h-7 rounded-full bg-brand-100 border-4 border-white text-brand-600 flex items-center justify-center text-xs font-bold shadow-sm">1</span>
+                    <div class="bg-brand-50/50 border border-brand-100 rounded-2xl p-6 sm:p-8 transition-all hover:bg-brand-50 hover:shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Expected Graduation: 2028</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">Delhi Technical Campus</h3>
+                                <p class="text-sm font-medium text-slate-500">Greater Noida, India</p>
+                            </div>
+                            <span class="self-start sm:self-center px-3 py-1.5 rounded-full text-xs font-bold bg-brand-600 text-white">CGPA: 7.2 / 10</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5 mb-2">
+                            <i class="fa-solid fa-graduation-cap text-brand-500"></i> Bachelor of Technology (B.Tech)
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Diving deep into Computer Science foundations, structured algorithms, software methodologies, database structures, and system networks.</p>
+                    </div>
+                </div>
+
+                <!-- Class 12 -->
+                <div class="relative">
+                    <span class="absolute -left-10 top-0.5 w-7 h-7 rounded-full bg-slate-100 border-4 border-white text-slate-500 flex items-center justify-center text-xs font-bold shadow-sm">2</span>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 transition-all hover:bg-slate-50 hover:shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Class 12th — Finished 2023</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">CBSE Board</h3>
+                            </div>
+                            <span class="self-start sm:self-center px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Aggregate: 65%</span>
+                        </div>
+                        <h4 class="font-bold text-slate-700 text-sm flex items-center gap-1.5 mb-2">
+                            <i class="fa-solid fa-school text-slate-400"></i> Higher Secondary Education
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Completed advanced courses in Physics, Chemistry, and Mathematics (PCM), laying a rigorous logical foundation.</p>
+                    </div>
+                </div>
+
+                <!-- Class 10 -->
+                <div class="relative">
+                    <span class="absolute -left-10 top-0.5 w-7 h-7 rounded-full bg-slate-100 border-4 border-white text-slate-500 flex items-center justify-center text-xs font-bold shadow-sm">3</span>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 transition-all hover:bg-slate-50 hover:shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Class 10th — Finished 2021</span>
+                                <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">CBSE Board</h3>
+                            </div>
+                            <span class="self-start sm:self-center px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Aggregate: 82%</span>
+                        </div>
+                        <h4 class="font-bold text-slate-700 text-sm flex items-center gap-1.5 mb-2">
+                            <i class="fa-solid fa-school text-slate-400"></i> Secondary Education
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Secured a foundational baseline, showcasing initial academic discipline and analytical capacities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-100 px-3 py-1.5 rounded-full">Contact</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Start a Conversation</h2>
+                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch max-w-5xl mx-auto">
+                <div class="lg:col-span-5 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <h3 class="font-extrabold text-slate-900 text-xl tracking-tight">Let's Connect Directly</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Have questions or want to discuss a software engineering role? Reach out through any channel or send an immediate brief message!</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600"><i class="fa-solid fa-phone"></i></span>
+                                <div>
+                                    <span class="block text-xs font-semibold text-slate-400 uppercase">Call / Message</span>
+                                    <a href="tel:+918750934863" class="font-bold text-slate-800 hover:text-brand-600 transition-colors text-sm sm:text-base">+91 8750934863</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <span class="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500"><i class="fa-solid fa-envelope"></i></span>
+                                <div>
+                                    <span class="block text-xs font-semibold text-slate-400 uppercase">Direct Email</span>
+                                    <a href="mailto:ap3549746@gmail.com" class="font-bold text-slate-800 hover:text-rose-500 transition-colors text-sm sm:text-base">ap3549746@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-100">
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">On the Web</span>
+                        <div class="flex gap-2.5">
+                            <a href="https://linkedin.com/in/ashish-pandit-59356632a" target="_blank" class="w-10 h-10 rounded-xl bg-brand-50 hover:bg-brand-100 text-brand-600 flex items-center justify-center transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                            <a href="https://github.com/ap3549746-sketch" target="_blank" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-900 flex items-center justify-center transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                    <iframe src="https://www.qwikmailer.in/f/1f7d93ca-9bcc-45e4-8396-2eff2cd585d0" width="100%" height="400" frameborder="0" style="border:0; border-radius: 8px; overflow:hidden;" allowtransparency="true"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <span class="w-9 h-9 rounded-lg bg-brand-600 text-white font-bold text-lg flex items-center justify-center shadow-md">AP</span>
+                <div>
+                    <span class="block text-white font-bold text-sm">Ashish Pandit</span>
+                    <span class="text-xs text-slate-500">Backend System Engineer Portfolio</span>
+                </div>
+            </div>
+            <p class="text-xs text-slate-500 text-center md:text-right">&copy; 2026 Ashish Pandit. Handcrafted with care. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT CONTROLLER LOGIC -->
+    <script src="script.js"></script>
+</body>
+</html>
