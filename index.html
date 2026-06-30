@@ -65,10 +65,6 @@
                         Skills
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
                     </a>
-                    <a href="#forge" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2 flex items-center gap-1.5">
-                        <i class="fa-solid fa-gears text-xs text-brand-500"></i> System Builder
-                        <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
-                    </a>
                     <a href="#projects" class="nav-link text-slate-600 hover:text-brand-600 font-semibold text-sm transition-colors relative py-2">
                         Projects
                         <span class="absolute bottom-0 left-0 w-full h-[2px] bg-brand-600 scale-x-0 transition-transform duration-300 origin-left"></span>
@@ -96,9 +92,6 @@
             <div class="px-4 pt-3 pb-6 space-y-2">
                 <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">About</a>
                 <a href="#skills" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">Skills</a>
-                <a href="#forge" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-gears text-brand-500"></i> System Builder
-                </a>
                 <a href="#projects" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">Projects</a>
                 <a href="#education" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-bold text-slate-700 hover:bg-brand-50 hover:text-brand-600 transition-all">Education</a>
                 <div class="pt-2 px-4">
@@ -281,130 +274,6 @@
                         <li class="flex items-center gap-2"><i class="fa-solid fa-envelope-open-text text-red-500 w-5"></i> Kafka & RabbitMQ</li>
                         <li class="flex items-center gap-2"><i class="fa-brands fa-git-alt text-slate-700 w-5"></i> Git & Postman</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INTERACTIVE GAME: BACKEND SYSTEM BUILDER -->
-    <section id="forge" class="py-20 bg-white border-b border-brand-100 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold uppercase tracking-widest text-brand-600 bg-brand-50 px-3 py-1.5 rounded-full">Interactive Segment</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3">Ashish's System Builder</h2>
-                <p class="text-slate-500 text-sm mt-2">Assemble a fast system by adding backend components to the configuration block!</p>
-                <div class="w-12 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                <div class="lg:col-span-4 space-y-4 flex flex-col justify-between">
-                    <div>
-                        <h3 class="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-microchip text-brand-600"></i> Target Systems
-                        </h3>
-                        
-                        <!-- Blueprint 1 -->
-                        <div onclick="selectBlueprint('ecommerce')" id="blueprint-ecommerce" class="blueprint-btn active p-5 rounded-2xl bg-brand-50 border-2 border-brand-500 shadow-sm cursor-pointer transition-all hover:shadow-md mb-4">
-                            <div class="flex justify-between items-start">
-                                <h4 class="font-bold text-slate-900 text-sm">E-Commerce Pipeline</h4>
-                                <span class="text-[10px] font-bold bg-brand-100 text-brand-700 px-2 py-0.5 rounded-md">Enterprise</span>
-                            </div>
-                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Required nodes: Secure APIs, database persistence, dynamic web client interaction.</p>
-                            <div class="flex items-center gap-2 mt-4 text-xs font-semibold text-brand-600">
-                                <i class="fa-solid fa-circle-nodes"></i>
-                                <span>Requires 4 System Nodes</span>
-                            </div>
-                        </div>
-
-                        <!-- Blueprint 2 -->
-                        <div onclick="selectBlueprint('distributed')" id="blueprint-distributed" class="blueprint-btn p-5 rounded-2xl bg-white border-2 border-slate-100 cursor-pointer transition-all hover:bg-slate-50 hover:shadow-sm">
-                            <div class="flex justify-between items-start">
-                                <h4 class="font-bold text-slate-900 text-sm">Distributed Task Cluster</h4>
-                                <span class="text-[10px] font-bold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-md">Asynchronous</span>
-                            </div>
-                            <p class="text-xs text-slate-500 mt-2 leading-relaxed">Required nodes: Asynchronous message digestion, microservices scaling, and isolated containers.</p>
-                            <div class="flex items-center gap-2 mt-4 text-xs font-semibold text-slate-500">
-                                <i class="fa-solid fa-circle-nodes"></i>
-                                <span>Requires 4 System Nodes</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-8 flex flex-col justify-between bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <h4 class="font-bold text-slate-800 text-md flex items-center gap-2">
-                                <i class="fa-solid fa-network-wired text-brand-600"></i> System Orchestration & Assembly
-                            </h4>
-                            <button onclick="resetForge()" class="text-xs font-bold text-slate-400 hover:text-rose-500 transition-colors flex items-center gap-1">
-                                <i class="fa-solid fa-rotate-left"></i> Reset System
-                            </button>
-                        </div>
-
-                        <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center min-h-[220px] text-center relative overflow-hidden">
-                            <div id="forge-empty-state" class="space-y-4">
-                                <div class="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 mx-auto text-3xl animate-pulse">
-                                    <i class="fa-solid fa-cube"></i>
-                                </div>
-                                <h5 class="font-bold text-slate-700">Add system components below to assemble the backend!</h5>
-                                <p class="text-xs text-slate-400 max-w-sm mx-auto">Click on the system inventory buttons below to dispatch system components to the assembler.</p>
-                            </div>
-
-                            <div id="forge-compiling-state" class="hidden space-y-4">
-                                <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
-                                    <div class="absolute inset-0 rounded-full border-4 border-dashed border-brand-500 animate-spin"></div>
-                                    <span class="text-3xl text-brand-600"><i class="fa-solid fa-microchip animate-pulse"></i></span>
-                                </div>
-                                <h5 class="font-extrabold text-brand-600 font-mono">Compiling Microservices...</h5>
-                                <p class="text-xs text-slate-400">Deploying cloud instances, mounting docker volumes, starting connection pools.</p>
-                            </div>
-
-                            <div id="forge-success-state" class="hidden space-y-4">
-                                <div class="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 text-2xl mx-auto animate-bounce">
-                                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                                </div>
-                                <h5 id="success-blueprint-title" class="font-extrabold text-emerald-600 text-lg">System Deployed Successfully!</h5>
-                                <p id="success-blueprint-desc" class="text-xs text-slate-500 max-w-md mx-auto leading-relaxed"></p>
-                                <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-xl flex items-center justify-center gap-3 max-w-xs mx-auto">
-                                    <span class="text-xs font-bold text-slate-400">Environment status:</span>
-                                    <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded">AWS EC2 Cluster Active</span>
-                                </div>
-                            </div>
-
-                            <div id="selected-components-tray" class="flex flex-wrap justify-center gap-2 mt-4"></div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8">
-                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">System Block Inventory</span>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                            <button onclick="addComponent('Java')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-brands fa-java text-orange-500"></i> Java
-                            </button>
-                            <button onclick="addComponent('Spring Boot')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-leaf text-emerald-500"></i> Spring Boot
-                            </button>
-                            <button onclick="addComponent('Spring Security')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-shield text-indigo-500"></i> Spring Security
-                            </button>
-                            <button onclick="addComponent('Apache Kafka')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-envelope-open-text text-red-500"></i> Apache Kafka
-                            </button>
-                            <button onclick="addComponent('MySQL')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-database text-blue-500"></i> MySQL
-                            </button>
-                            <button onclick="addComponent('PostgreSQL')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-database text-indigo-400"></i> PostgreSQL
-                            </button>
-                            <button onclick="addComponent('React.js')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-brands fa-react text-sky-500"></i> React.js
-                            </button>
-                            <button onclick="addComponent('Docker')" class="pantry-item bg-white hover:bg-brand-50 border border-slate-200 rounded-xl py-3 px-4 font-bold text-xs text-slate-700 text-center transition-all flex items-center justify-center gap-1.5">
-                                <i class="fa-brands fa-docker text-sky-500"></i> Docker
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
